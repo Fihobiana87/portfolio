@@ -20,10 +20,14 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse flex-grow-0" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
-          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">À propos</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html" data-en="About">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html" data-en="Projects">Projets</a></li>
           <li class="nav-item"><a class="nav-link nav-cta active" href="contact.html">Contact</a></li>
+          <li class="nav-item lang-switch" role="group" aria-label="Choisir la langue">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+            <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -35,8 +39,8 @@
       <div class="container-wide">
         <div class="reveal" style="max-width:640px">
           <span class="label">Contact</span>
-          <h1 style="margin-top:1rem">Parlons projet ou opportunité.</h1>
-          <p>Je suis ouvert aux échanges autour du marketing digital, du commerce, des produits digitaux, de Nouvaka, et de toute opportunité qui me permet d'apporter de la valeur tout en apprenant.</p>
+          <h1 style="margin-top:1rem" data-en="Let's talk project or opportunity.">Parlons projet ou opportunité.</h1>
+          <p data-en="I am open to discussing digital marketing, commerce, digital products, Nouvaka, and any opportunity that lets me bring value while learning.">Je suis ouvert aux échanges autour du marketing digital, du commerce, des produits digitaux, de Nouvaka, et de toute opportunité qui me permet d'apporter de la valeur tout en apprenant.</p>
         </div>
       </div>
     </section>
@@ -45,23 +49,24 @@
       <div class="container-wide">
         <div class="row g-5">
           <div class="col-lg-6 reveal">
-            <span class="label on-light">Coordonnées</span>
+            <span class="label on-light" data-en="Contact details">Coordonnées</span>
             <div class="contact-links">
-              <a href="mailto:razafindraibe.fihobiana877@gmail.com">Email<span>Écrire</span></a>
-              <div class="contact-links-phone"><div class="phone-numbers"><a href="tel:+261385806747">+261 38 580 67 47</a><a href="tel:+261379702839">+261 37 970 28 39</a></div><span>Téléphone</span></div>
-              <a href="https://nouvaka.great-site.net" target="_blank" rel="noopener">Nouvaka<span>Découvrir</span></a>
-              <a href="assets/cv/CV_RAZAFINDRAIBE.pdf" download>CV<span>Télécharger</span></a>
+              <a href="mailto:razafindraibe.fihobiana877@gmail.com">Email<span data-en="Write">Écrire</span></a>
+              <div class="contact-links-phone"><div class="phone-numbers"><a href="tel:+261385806747">+261 38 580 67 47</a><a href="tel:+261379702839">+261 37 970 28 39</a></div><span data-en="Phone">Téléphone</span></div>
+              <a class="contact-link-whatsapp" href="https://wa.me/261385806747" target="_blank" rel="noopener"><span class="contact-link-label"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</span><span data-en="Chat">Discuter</span></a>
+              <a href="https://nouvaka.great-site.net" target="_blank" rel="noopener">Nouvaka<span data-en="Discover">Découvrir</span></a>
+              <a href="assets/cv/CV_RAZAFINDRAIBE.pdf" download>CV<span data-en="Download">Télécharger</span></a>
             </div>
           </div>
           <div class="col-lg-6 reveal reveal-delay">
-            <span class="label on-light">Envoyer un message</span>
+            <span class="label on-light" data-en="Send a message">Envoyer un message</span>
             <form class="contact-form" id="contactForm" novalidate style="margin-top:1.6rem">
               <div class="row g-3">
-                <div class="col-md-6"><label for="name">Nom</label><input class="form-control" id="name" name="name" type="text" required minlength="2"></div>
+                <div class="col-md-6"><label for="name" data-en="Name">Nom</label><input class="form-control" id="name" name="name" type="text" required minlength="2"></div>
                 <div class="col-md-6"><label for="email">Email</label><input class="form-control" id="email" name="email" type="email" required></div>
-                <div class="col-12"><label for="subject">Sujet</label><input class="form-control" id="subject" name="subject" type="text" required minlength="3"></div>
+                <div class="col-12"><label for="subject" data-en="Subject">Sujet</label><input class="form-control" id="subject" name="subject" type="text" required minlength="3"></div>
                 <div class="col-12"><label for="message">Message</label><textarea class="form-control" id="message" name="message" rows="4" required minlength="12"></textarea></div>
-                <div class="col-12 mt-4"><button class="btn-v2 magnetic" type="submit">Envoyer le message</button></div>
+                <div class="col-12 mt-4"><button class="btn-v2 magnetic" type="submit" data-en="Send message">Envoyer le message</button></div>
                 <div class="col-12"><p class="form-status" aria-live="polite"></p></div>
               </div>
             </form>
@@ -74,8 +79,8 @@
   <footer class="footer">
     <div class="container-wide">
       <div class="footer-top">
-        <div><strong style="font-family:var(--display);font-style:italic;font-size:1.3rem">Fihobiana Razafindraibe</strong><p style="margin-top:.5rem;max-width:360px">Marketing digital, commerce et produits digitaux.</p></div>
-        <div class="footer-links"><a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="projects.html">Projets</a></div>
+        <div><strong style="font-family:var(--display);font-style:italic;font-size:1.3rem">Fihobiana Razafindraibe</strong><p style="margin-top:.5rem;max-width:360px" data-en="Digital marketing, commerce, and digital products.">Marketing digital, commerce et produits digitaux.</p></div>
+        <div class="footer-links"><a href="index.html" data-en="Home">Accueil</a><a href="about.html" data-en="About">À propos</a><a href="projects.html" data-en="Projects">Projets</a></div>
         <div class="socials">
           <a href="mailto:razafindraibe.fihobiana877@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
           <a href="https://github.com/Fihobiana87" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>

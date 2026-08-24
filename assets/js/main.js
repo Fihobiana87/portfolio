@@ -1,4 +1,3 @@
-// Interface behavior for the static portfolio.
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -10,14 +9,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll("[data-count-to]");
   const lightbox = document.getElementById("lightbox");
   const contactForm = document.getElementById("contactForm");
+  const langButtons = document.querySelectorAll(".lang-btn");
+  const translatable = document.querySelectorAll("[data-en]");
 
-  // Sticky nav shadow on scroll.
+  const applyLanguage = (lang) => {
+    document.documentElement.lang = lang;
+    translatable.forEach((el) => {
+      if (!el.dataset.frText) el.dataset.frText = el.innerHTML;
+      el.innerHTML = lang === "en" ? el.dataset.en : el.dataset.frText;
+    });
+    langButtons.forEach((btn) => {
+      const isActive = btn.dataset.lang === lang;
+      btn.classList.toggle("is-active", isActive);
+      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+    localStorage.setItem("site-lang", lang);
+  };
+
+  if (langButtons.length) {
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    });
+    applyLanguage(localStorage.getItem("site-lang") || "fr");
+  }
+
   const updateNav = () => {
     if (!nav) return;
     nav.classList.toggle("nav-scrolled", window.scrollY > 16);
   };
 
-  // Subtle parallax on the hero grid and giant type layer.
   const updateParallax = () => {
     if (reduceMotion) return;
     parallaxItems.forEach((el) => {
@@ -33,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateParallax();
   }, { passive: true });
 
-  // Intersection Observer powers fade-in, slide-up, skill bars and count-up figures.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -72,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(tick);
   }
 
-  // Lightbox for project screenshots.
   if (lightbox) {
     const lightboxImage = lightbox.querySelector("img");
     const closeButton = lightbox.querySelector(".lightbox-close");
@@ -102,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Contact validation stays client-side and then opens the user's email client.
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -116,8 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!fieldIsValid) valid = false;
       });
 
+      const isEn = document.documentElement.lang === "en";
+
       if (!valid) {
-        status.textContent = "Merci de completer correctement tous les champs.";
+        status.textContent = isEn ? "Please fill in all fields correctly." : "Merci de completer correctement tous les champs.";
         status.style.color = "#c0483c";
         return;
       }
@@ -125,14 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = new FormData(contactForm);
       const subject = encodeURIComponent(data.get("subject"));
       const body = encodeURIComponent(`Nom: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
-      status.textContent = "Message pret. Ouverture de votre application email...";
+      status.textContent = isEn ? "Message ready. Opening your email application..." : "Message pret. Ouverture de votre application email...";
       status.style.color = "#3fae74";
       window.location.href = `mailto:razafindraibe.fihobiana877@gmail.com?subject=${subject}&body=${body}`;
       contactForm.reset();
     });
   }
 
-  // Magnetic buttons — nudge toward the cursor within a small radius, ease back on leave.
   if (finePointer && !reduceMotion) {
     document.querySelectorAll(".magnetic").forEach((el) => {
       let frame;
