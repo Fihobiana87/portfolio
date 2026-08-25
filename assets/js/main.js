@@ -12,11 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const langButtons = document.querySelectorAll(".lang-btn");
   const translatable = document.querySelectorAll("[data-en]");
 
+  const splitWords = (el) => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words
+      .map((word, i) => `<span class="split-word" style="--i:${i}"><span class="split-word-inner">${word}</span></span>`)
+      .join(" ");
+  };
+
   const applyLanguage = (lang) => {
     document.documentElement.lang = lang;
     translatable.forEach((el) => {
       if (!el.dataset.frText) el.dataset.frText = el.innerHTML;
       el.innerHTML = lang === "en" ? el.dataset.en : el.dataset.frText;
+      if (el.hasAttribute("data-split")) splitWords(el);
     });
     langButtons.forEach((btn) => {
       const isActive = btn.dataset.lang === lang;
@@ -52,6 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNav();
     updateParallax();
   }, { passive: true });
+
+  const heroName = document.querySelector(".hero-v2-name");
+  if (heroName) {
+    const nameSpan = heroName.querySelector("span");
+    const chars = nameSpan.textContent.split("");
+    nameSpan.innerHTML = chars
+      .map((char, i) => `<span class="split-char" style="--i:${i}">${char}</span>`)
+      .join("");
+    requestAnimationFrame(() => requestAnimationFrame(() => heroName.classList.add("is-loaded")));
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -165,6 +183,71 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       el.addEventListener("mouseleave", () => {
         cancelAnimationFrame(frame);
+        el.style.transform = "";
+      });
+    });
+
+    const cursorDot = document.createElement("div");
+    cursorDot.className = "cursor-dot";
+    const cursorGlow = document.createElement("div");
+    cursorGlow.className = "cursor-glow";
+    document.body.append(cursorDot, cursorGlow);
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let glowX = mouseX;
+    let glowY = mouseY;
+    let cursorStarted = false;
+
+    document.addEventListener("mousemove", (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+      if (!cursorStarted) {
+        cursorStarted = true;
+        document.documentElement.classList.add("has-custom-cursor");
+        cursorDot.style.opacity = "1";
+        cursorGlow.style.opacity = "1";
+      }
+      const isInteractive = event.target.closest("a, button, .gallery-item, input, textarea");
+      cursorDot.classList.toggle("is-active", !!isInteractive);
+      cursorGlow.classList.toggle("is-active", !!isInteractive);
+      if (!glowFrame) glowFrame = requestAnimationFrame(trackGlow);
+    }, { passive: true });
+
+    document.addEventListener("mouseleave", () => {
+      cursorDot.style.opacity = "0";
+      cursorGlow.style.opacity = "0";
+    });
+    document.addEventListener("mouseenter", () => {
+      if (cursorStarted) {
+        cursorDot.style.opacity = "1";
+        cursorGlow.style.opacity = "1";
+      }
+    });
+
+    let glowFrame = null;
+    const trackGlow = () => {
+      glowX += (mouseX - glowX) * 0.14;
+      glowY += (mouseY - glowY) * 0.14;
+      cursorGlow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
+      if (Math.abs(mouseX - glowX) > 0.5 || Math.abs(mouseY - glowY) > 0.5) {
+        glowFrame = requestAnimationFrame(trackGlow);
+      } else {
+        glowFrame = null;
+      }
+    };
+
+    document.querySelectorAll(".work-media, .case-figure").forEach((el) => {
+      el.addEventListener("mousemove", (event) => {
+        const rect = el.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - 0.5;
+        const py = (event.clientY - rect.top) / rect.height - 0.5;
+        el.style.transition = "transform .1s linear";
+        el.style.transform = `perspective(900px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 7).toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      el.addEventListener("mouseleave", () => {
+        el.style.transition = "transform .6s var(--ease)";
         el.style.transform = "";
       });
     });
