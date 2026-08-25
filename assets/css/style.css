@@ -208,7 +208,7 @@ h3 { font-size: 1.05rem; font-family: var(--sans); font-weight: 700; letter-spac
 .hero-v2-name span {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(4.8rem, 13.5vw, 11.5rem);
+  font-size: clamp(5.5rem, 15.5vw, 13.5rem);
   line-height: .84;
   letter-spacing: -.03em;
   color: transparent;
