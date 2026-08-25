@@ -17,17 +17,19 @@
   <nav class="navbar navbar-expand-lg fixed-top premium-nav" aria-label="Navigation principale">
     <div class="container-wide d-flex align-items-center justify-content-between">
       <a class="navbar-brand" href="index.html">Fihobiana</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="nav-controls">
+        <div class="lang-switch" role="group" aria-label="Choisir la langue">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
+      </div>
       <div class="collapse navbar-collapse flex-grow-0" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+        <ul class="navbar-nav align-items-lg-center gap-lg-4">
           <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home">Accueil</a></li>
           <li class="nav-item"><a class="nav-link active" href="about.html" data-en="About">À propos</a></li>
           <li class="nav-item"><a class="nav-link" href="projects.html" data-en="Projects">Projets</a></li>
           <li class="nav-item"><a class="nav-link nav-cta" href="contact.html">Contact</a></li>
-          <li class="nav-item lang-switch" role="group" aria-label="Choisir la langue">
-            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-            <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
-          </li>
         </ul>
       </div>
     </div>
@@ -35,7 +37,7 @@
 
   <main class="page-main">
     <section class="page-hero">
-      <div class="page-hero-figure" aria-hidden="true">FR</div>
+      <div class="page-hero-figure" aria-hidden="true">01</div>
       <div class="container-wide">
         <div class="row align-items-center g-5">
           <div class="col-lg-7 reveal">
@@ -107,11 +109,11 @@
       <div class="container-wide">
         <span class="label on-light reveal" data-en="Journey">Parcours</span>
         <h2 class="reveal" style="margin-top:1rem" data-en="Digital marketing, commerce, and projects.">Marketing digital, commerce et projets.</h2>
-        <div class="value-row reveal" style="margin-top:3rem">
-          <div><i class="fa-solid fa-graduation-cap"></i><h3 data-en="DTS at ESPIC Madagascar">DTS à ESPIC Madagascar</h3><p data-en="A clear foundation to understand the customer, sales, communication, and strategy.">Une base claire pour comprendre le client, la vente, la communication et la stratégie.</p></div>
-          <div><i class="fa-solid fa-chart-line"></i><h3 data-en="Marketing vision">Vision marketing</h3><p data-en="How a brand presents itself, builds trust, and turns an audience into customers.">Comment une marque se présente, crée de la confiance et transforme une audience en clients.</p></div>
-          <div><i class="fa-solid fa-layer-group"></i><h3>E-Kata</h3><p data-en="A structured e-commerce experience, from the purchase journey to administration.">Une expérience e-commerce structurée, du parcours d'achat à l'administration.</p></div>
-          <div><i class="fa-solid fa-robot"></i><h3>Nouvaka</h3><p data-en="An AI agent platform, created to automate the work of companies.">Une plateforme d'agents IA, créée pour automatiser le travail des entreprises.</p></div>
+        <div class="timeline" style="margin-top:3rem">
+          <div class="timeline-item reveal"><span data-en="Training">Formation</span><div data-en="&lt;h3&gt;DTS at ESPIC Madagascar&lt;/h3&gt;&lt;p&gt;A clear foundation to understand the customer, sales, communication, and strategy.&lt;/p&gt;"><h3>DTS à ESPIC Madagascar</h3><p>Une base claire pour comprendre le client, la vente, la communication et la stratégie.</p></div></div>
+          <div class="timeline-item reveal"><span data-en="Approach">Approche</span><div data-en="&lt;h3&gt;Marketing vision&lt;/h3&gt;&lt;p&gt;How a brand presents itself, builds trust, and turns an audience into customers.&lt;/p&gt;"><h3>Vision marketing</h3><p>Comment une marque se présente, crée de la confiance et transforme une audience en clients.</p></div></div>
+          <div class="timeline-item reveal"><span data-en="Project">Projet</span><div data-en="&lt;h3&gt;E-Kata&lt;/h3&gt;&lt;p&gt;A structured e-commerce experience, from the purchase journey to administration.&lt;/p&gt;"><h3>E-Kata</h3><p>Une expérience e-commerce structurée, du parcours d'achat à l'administration.</p></div></div>
+          <div class="timeline-item reveal"><span data-en="Product">Produit</span><div data-en="&lt;h3&gt;Nouvaka&lt;/h3&gt;&lt;p&gt;An AI agent platform, created to automate the work of companies.&lt;/p&gt;"><h3>Nouvaka</h3><p>Une plateforme d'agents IA, créée pour automatiser le travail des entreprises.</p></div></div>
         </div>
       </div>
     </section>

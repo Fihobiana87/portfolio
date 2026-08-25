@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isEn = document.documentElement.lang === "en";
 
       if (!valid) {
-        status.textContent = isEn ? "Please fill in all fields correctly." : "Merci de completer correctement tous les champs.";
+        status.textContent = isEn ? "Please fill in all fields correctly." : "Merci de compléter correctement tous les champs.";
         status.style.color = "#c0483c";
         return;
       }
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = new FormData(contactForm);
       const subject = encodeURIComponent(data.get("subject"));
       const body = encodeURIComponent(`Nom: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
-      status.textContent = isEn ? "Message ready. Opening your email application..." : "Message pret. Ouverture de votre application email...";
+      status.textContent = isEn ? "Message ready. Opening your email application..." : "Message prêt. Ouverture de votre application email...";
       status.style.color = "#3fae74";
       window.location.href = `mailto:razafindraibe.fihobiana877@gmail.com?subject=${subject}&body=${body}`;
       contactForm.reset();

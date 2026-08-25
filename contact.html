@@ -17,17 +17,19 @@
   <nav class="navbar navbar-expand-lg fixed-top premium-nav" aria-label="Navigation principale">
     <div class="container-wide d-flex align-items-center justify-content-between">
       <a class="navbar-brand" href="index.html">Fihobiana</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="nav-controls">
+        <div class="lang-switch" role="group" aria-label="Choisir la langue">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
+      </div>
       <div class="collapse navbar-collapse flex-grow-0" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+        <ul class="navbar-nav align-items-lg-center gap-lg-4">
           <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home">Accueil</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html" data-en="About">À propos</a></li>
           <li class="nav-item"><a class="nav-link" href="projects.html" data-en="Projects">Projets</a></li>
           <li class="nav-item"><a class="nav-link nav-cta active" href="contact.html">Contact</a></li>
-          <li class="nav-item lang-switch" role="group" aria-label="Choisir la langue">
-            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-            <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
-          </li>
         </ul>
       </div>
     </div>
