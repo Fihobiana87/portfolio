@@ -48,9 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateNav();
   updateParallax();
+  let scrollFrame = null;
   window.addEventListener("scroll", () => {
-    updateNav();
-    updateParallax();
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => {
+      updateNav();
+      updateParallax();
+      scrollFrame = null;
+    });
   }, { passive: true });
 
   const observer = new IntersectionObserver((entries) => {
@@ -138,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!valid) {
         status.textContent = isEn ? "Please fill in all fields correctly." : "Merci de compléter correctement tous les champs.";
         status.style.color = "#c0483c";
+        status.classList.add("is-visible");
         return;
       }
 
@@ -146,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const body = encodeURIComponent(`Nom: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
       status.textContent = isEn ? "Message ready. Opening your email application..." : "Message prêt. Ouverture de votre application email...";
       status.style.color = "#3fae74";
+      status.classList.add("is-visible");
       window.location.href = `mailto:razafindraibe.fihobiana877@gmail.com?subject=${subject}&body=${body}`;
       contactForm.reset();
     });
